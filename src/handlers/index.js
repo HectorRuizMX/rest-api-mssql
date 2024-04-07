@@ -3,7 +3,7 @@ const Utils = require('../utils/helpers');
 const Handlers = {
     getAllHandlers: () => {
         const config = {
-            path: __dirname,
+            path: `${Utils.getPath(__dirname)}\\src\\handlers`,
             fileType: '.js',
             exclude: ['index.js']
         };

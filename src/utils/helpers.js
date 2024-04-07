@@ -36,5 +36,9 @@ const Utils = {
 
         return data;
     },
+    getPath: (path) => {
+        const [root] = path.split('\\node_modules');
+        return root;
+    },
 };
 module.exports = Utils;

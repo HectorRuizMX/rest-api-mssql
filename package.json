@@ -1,6 +1,6 @@
 {
     "name": "rest-api-mssql",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "description": "This is a framework to create a Restful API to use with SQL",
     "main": "index.js",
     "keywords": [
