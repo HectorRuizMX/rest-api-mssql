@@ -9,12 +9,12 @@ class Server {
     constructor(config = {}) {
         const router = express.Router();
         this.app = express();
-        this.port = process.env.PORT;
+        this.port = process.env.PORT || 3000;
         Router.init(router);
         this.middlewares({...config, router});
     }
     middlewares(config) {
-        const { prefix, router } = config;
+        const { prefix = '', router } = config;
         this.app.use(morgan('dev'));
         this.app.use(cors());
         this.app.use(express.json());

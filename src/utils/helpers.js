@@ -1,4 +1,3 @@
-const Validations = require('./validations');
 const fs = require('fs');
 
 const Utils = {
@@ -7,6 +6,7 @@ const Utils = {
         const arrFiles = [];
         let jsContent = {};
         let data;
+
 
         try {
             const files = fs.readdirSync(path);

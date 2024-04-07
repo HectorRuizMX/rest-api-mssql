@@ -1,8 +1,7 @@
 const Validations = require('../utils/validations');
 const Handlers = require('../handlers');
-const RouterUtils = require('../routes/utils');
 const Utils = require('../utils/helpers');
-const { version } = require('../../package.json');
+const { version, name } = require('../../package.json');
 const path = require('node:path');
 
 const Router = {
@@ -12,7 +11,6 @@ const Router = {
 
         //Router must be added here
         Router.createRoutes(router);
-        RouterUtils.init(router);
 
         //notFound must be the last route
         Router.notFound(router);
@@ -21,7 +19,7 @@ const Router = {
         router.get('/', (_req, res) => {
             res.status(200).send({
                 code: 200,
-                msg: 'Agenda Smart API',
+                msg: `${name} API`,
                 version,
             });
         });
@@ -47,7 +45,7 @@ const Router = {
     },
     createRoutes: (router) => {
         const srcPath = path.dirname(__dirname);
-        const routes = Utils.getContentFiles({ path: `${srcPath}/routes`, fileType: '.json' });
+        const routes = Utils.getContentFiles({ path: `${srcPath}\\routes`, fileType: '.json' });
         Router.registerRoutes(router, routes);
     },
 };
