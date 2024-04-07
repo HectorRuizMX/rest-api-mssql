@@ -2,8 +2,9 @@ const Utils = require('../utils/helpers');
 
 const Handlers = {
     getAllHandlers: () => {
+        const env = process.env.NODE_ENV || 'PROD';
         const config = {
-            path: `${Utils.getPath(__dirname)}\\src\\handlers`,
+            path: env === 'DEV' ? __dirname : `${Utils.getPath(__dirname)}\\src\\handlers`,
             fileType: '.js',
             exclude: ['index.js']
         };
@@ -21,8 +22,10 @@ const Handlers = {
             currentHandler = handlers;
         });
 
-        if(!currentHandler || typeof currentHandler !== 'function') console.error(`Handler ${handlerName} not found`);
+        if(!currentHandler) console.error(`Handler ${handlerName} not found`);
+        if(typeof currentHandler === 'object') console.error(`Handler ${handlerName} is not a function`);
+
         return currentHandler;
-    }
+    },
 };
 module.exports = Handlers;

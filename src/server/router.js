@@ -1,8 +1,10 @@
+const path = require('path');
+
+const { version, name } = require('../../package.json');
 const Validations = require('../utils/validations');
 const Handlers = require('../handlers');
+const SqlHandlers = require('../sql');
 const Utils = require('../utils/helpers');
-const { version, name } = require('../../package.json');
-const path = require('node:path');
 
 const Router = {
     init: (router) => {
@@ -33,9 +35,17 @@ const Router = {
         if(Validations.isNotEmptyArray(routes)){
             routes.forEach(route => {
                 if(Validations.validateRoute(route)){
-                    const { method = '', path = [], handler = '' } = route;
-                    const currentHandler = Handlers.getHandler(handler);
-                    if(!currentHandler) return;
+                    const { method = '', path = [], handler = '', sql = [] } = route;
+                    let currentHandler = sql.length > 0 ? SqlHandlers.getSQL(sql) : Handlers.getHandler(handler);
+
+                    if(typeof currentHandler !== 'function' && sql.length === 0) return console.error(`This route ${JSON.stringify(route)} has no valid function handler`);
+                    if(typeof currentHandler !== 'string' && sql.length > 0) return console.error(`This route ${JSON.stringify(route)} has no valid sql handler`);
+                    if(!currentHandler) return console.error(`Handler ${handler} not found to this route ${JSON.stringify(route)}`);
+
+                    const sqlQuery = currentHandler;
+                    if(sql.length > 0) {
+                        currentHandler = (req, res) => SqlHandlers.runSQLQuery(req, res, sqlQuery);
+                    }
                     path.forEach(p => {
                         router[method.toLowerCase()](p, currentHandler);
                     });
@@ -44,8 +54,9 @@ const Router = {
         }
     },
     createRoutes: (router) => {
-        const srcPath = Utils.getPath(__dirname);
-        const routes = Utils.getContentFiles({ path: `${srcPath}\\src\\routes`, fileType: '.json' });
+        const env = process.env.NODE_ENV || 'PROD';
+        const srcPath = env === 'DEV' ? `${path.dirname(__dirname)}\\routes` : `${Utils.getPath(__dirname)}\\src\\routes`;
+        const routes = Utils.getContentFiles({ path: srcPath, fileType: '.json' });
         Router.registerRoutes(router, routes);
     },
 };

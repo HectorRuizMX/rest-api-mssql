@@ -2,6 +2,7 @@
 *.example.js
 *.example.json
 *.example.md
+*.example.sql
 *.example.txt
 *.example.html
 *.example.css

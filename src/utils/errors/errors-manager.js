@@ -1,4 +1,4 @@
-const ErrorCodes = require('./errorCodes.json');
+const ErrorCodes = require('./error-codes.json');
 
 const ErrorsManager = {
     printError: (error,data) => {
