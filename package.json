@@ -3,6 +3,11 @@
     "version": "1.0.0",
     "description": "This is a framework to create a Restful API to use with SQL",
     "main": "index.js",
+    "keywords": [
+        "restful",
+        "api",
+        "sql"
+    ],
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "build": "",
