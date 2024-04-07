@@ -1,0 +1,92 @@
+{
+    "http": [
+        {
+            "code": 400,
+            "msg": "Bad Request"
+        },
+        {
+            "code": 401,
+            "msg": "Unauthorized"
+        },
+        {
+            "code": 403,
+            "msg": "Forbidden"
+        },
+        {
+            "code": 404,
+            "msg": "Not Found"
+        },
+        {
+            "code": 408,
+            "msg": "Request Timeout"
+        },
+        {
+            "code": 409,
+            "msg": "Conflict"
+        },
+        {
+            "code": 500,
+            "msg": "Internal Server Error"
+        },
+        {
+            "code": 501,
+            "msg": "Not Implemented"
+        },
+        {
+            "code": 502,
+            "msg": "Bad Gateway"
+        },
+        {
+            "code": 503,
+            "msg": "Service Unavailable"
+        },
+        {
+            "code": 504,
+            "msg": "Gateway Timeout"
+        },
+        {
+            "code": 505,
+            "msg": "HTTP Version Not Supported"
+        }
+    ],
+    "route": {
+        "model": [
+            {
+                "code": "R001",
+                "msg": "Method is required",
+                "property": "method",
+                "expected": "exists"
+            },
+            {
+                "code": "R002",
+                "msg": "Path is required",
+                "property": "path",
+                "expected": "exists"
+            },
+            {
+                "code": "R003",
+                "msg": "Handler is required",
+                "property": "handler",
+                "expected": "exists"
+            },
+            {
+                "code": "R004",
+                "msg": "Method must be a string",
+                "property": "method",
+                "expected": "type"
+            },
+            {
+                "code": "R005",
+                "msg": "Path must be a string",
+                "property": "path",
+                "expected": "type"
+            },
+            {
+                "code": "R006",
+                "msg": "Path must be an array of strings",
+                "property": "path",
+                "expected": "type"
+            }
+        ]
+    }
+}

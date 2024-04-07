@@ -1,0 +1,32 @@
+{
+    "name": "rest-api-mssql",
+    "version": "1.0.0",
+    "description": "This is a framework to create a Restful API to use with SQL",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "build": "",
+        "start": "node index.js",
+        "dev": "nodemon index.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/HectorRuizMX/rest-api-mssql.git"
+    },
+    "author": "HectorRuizMX (https://github.com/HectorRuizMX)",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/HectorRuizMX/rest-api-mssql/issues"
+    },
+    "homepage": "https://github.com/HectorRuizMX/rest-api-mssql/blob/master/README.md",
+    "devDependencies": {
+        "nodemon": "^3.1.0"
+    },
+    "dependencies": {
+        "cors": "^2.8.5",
+        "dotenv": "^16.4.5",
+        "express": "^4.19.2",
+        "morgan": "^1.10.0",
+        "uuid": "^9.0.1"
+    }
+}
