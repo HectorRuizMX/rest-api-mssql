@@ -45,7 +45,7 @@ const Router = {
     },
     createRoutes: (router) => {
         const srcPath = Utils.getPath(__dirname);
-        const routes = Utils.getContentFiles({ path: `${srcPath}\\routes`, fileType: '.json' });
+        const routes = Utils.getContentFiles({ path: `${srcPath}\\src\\routes`, fileType: '.json' });
         Router.registerRoutes(router, routes);
     },
 };
