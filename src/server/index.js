@@ -7,9 +7,12 @@ const Router = require("./router");
 
 class Server {
     constructor(config = {}) {
-        const router = express.Router();
         this.app = express();
-        this.port = process.env.PORT || 3000;
+        this.port = config.port || 3000;
+
+        const router = express.Router();
+        const routerAuth = express.Router();
+
         Router.init(router);
         this.middlewares({...config, router});
     }

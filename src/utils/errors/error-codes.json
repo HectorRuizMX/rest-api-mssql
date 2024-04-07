@@ -65,26 +65,26 @@
             },
             {
                 "code": "R003",
-                "msg": "Handler is required",
-                "property": "handler",
-                "expected": "exists"
-            },
-            {
-                "code": "R004",
                 "msg": "Method must be a string",
                 "property": "method",
                 "expected": "type"
             },
             {
+                "code": "R004",
+                "msg": "Handler must be a string",
+                "property": "handler",
+                "expected": "type"
+            },
+            {
                 "code": "R005",
-                "msg": "Path must be a string",
+                "msg": "Path must be an array of strings",
                 "property": "path",
                 "expected": "type"
             },
             {
                 "code": "R006",
-                "msg": "Path must be an array of strings",
-                "property": "path",
+                "msg": "Sql must be an array of strings",
+                "property": "sql",
                 "expected": "type"
             }
         ]

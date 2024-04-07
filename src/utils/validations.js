@@ -1,4 +1,4 @@
-const ErrorsManager = require('./errors/errorsManager');
+const ErrorsManager = require('./errors/errors-manager');
 const Models = require('../models/');
 
 const Validations = {
@@ -18,11 +18,12 @@ const Validations = {
         const errors = [];
 
         Object.entries(model).forEach(([property, type]) => {
-            if (!data[property] || typeof data[property] !== type) {
+            const [modelType, required] = type.split('?');
+            if (!data[property] || modelType !== type) {
+                if(typeof required !== 'undefined') return;
                 errors.push({ data, property, expected: !data[property] ? 'exist' : 'type' });
             }
         });
-
         return errors;
     },
 };
