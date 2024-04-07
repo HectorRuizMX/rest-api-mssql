@@ -1,5 +1,8 @@
 const Server = require('./src/server');
 
-const server = new Server();
+const BuildServer = (config) => {
+    const server = new Server(config);
+    server.listen();
+};
 
-server.listen();
+module.exports = { BuildServer };
